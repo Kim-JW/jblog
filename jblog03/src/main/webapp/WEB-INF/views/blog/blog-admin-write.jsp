@@ -14,24 +14,36 @@
 		<div id="header">
 			<h1>Spring 이야기</h1>
 			<ul>
-				<li><a href="">로그인</a></li>
-				<li><a href="">로그아웃</a></li>
-				<li><a href="">블로그 관리</a></li>
+				<c:choose>
+					<c:when test="${empty authUser }">
+						<li><a href="${pageContext.request.contextPath}/user/login">로그인</a></li>		
+					</c:when>
+					<c:otherwise>
+						<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>	
+					</c:otherwise>
+				</c:choose>
+				<li><a href="${pageContext.request.contextPath}/admin">블로그 관리</a></li>
+				<li><a href="${pageContext.request.contextPath}/${blogVo.userId}">내 블로그</a></li>
 			</ul>
 		</div>
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<ul class="admin-menu">
-					<li><a href="">기본설정</a></li>
-					<li><a href="">카테고리</a></li>
+					<li><a href="${pageContext.request.contextPath}/${blogVo.userId }/admin">기본설정</a></li>
+					<li><a href="${pageContext.request.contextPath}/${blogVo.userId }/admin/category">카테고리</a></li>
 					<li class="selected">글작성</li>
 				</ul>
-				<form action="" method="post">
+				<form action="${pageContext.request.contextPath}/${blogVo.userId }/admin/write" method="post">
 			      	<table class="admin-cat-write">
 			      		<tr>
 			      			<td class="t">제목</td>
 			      			<td>
 			      				<input type="text" size="60" name="title">
+				      			<select name = "categoryNo">
+				      				<c:forEach items="${map.categorylist }" var= "categoryvo" varStatus="status">				  
+				      					<option value = "${categoryvo.no}">${categoryvo.name }</option>
+				      				</c:forEach>
+				      			</select>
 				      			<select name="category">
 				      				<option>미분류</option>
 				      				<option>자바</option>
@@ -40,7 +52,7 @@
 			      		</tr>
 			      		<tr>
 			      			<td class="t">내용</td>
-			      			<td><textarea name="content"></textarea></td>
+			      			<td><textarea name="contents"></textarea></td>
 			      		</tr>
 			      		<tr>
 			      			<td>&nbsp;</td>

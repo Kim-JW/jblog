@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="category">
+	<insert id="insert" parameterType="uservo">
+		<![CDATA[
+		insert 
+		into category 
+		values (null, '미분류', '내 블로그를 소개해보세요', #{id })
+		]]>
+	</insert>
+	
+	<delete id = "delete" parameterType = "long" >
+		<![CDATA[
+			delete from category where no = #{no}
+		]]>
+	</delete>
+	
+	<select id = "getAllCategory" parameterType = "string" resultType = "categoryvo">
+		<![CDATA[
+			select no, name, description, blog_id as blogId from category where blog_id = #{id}
+		]]>
+	</select>
+	
+	<insert id="insertNew" parameterType="categoryvo">
+		<![CDATA[
+		insert 
+		into category 
+		values (null, #{name }, #{description }, #{blogId })
+		]]>
+	</insert>
+</mapper>

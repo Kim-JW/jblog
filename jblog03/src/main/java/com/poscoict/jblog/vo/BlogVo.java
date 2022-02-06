@@ -3,7 +3,7 @@ package com.poscoict.jblog.vo;
 public class BlogVo {
 	private String title;
 	private String logo;
-	private String user_id;
+	private String userId;
 	
 	public String getTitle() {
 		return title;
@@ -17,16 +17,15 @@ public class BlogVo {
 	public void setLogo(String logo) {
 		this.logo = logo;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	@Override
 	public String toString() {
-		return "BlogVo [title=" + title + ", logo=" + logo + ", user_id=" + user_id + "]";
+		return "BlogVo [title=" + title + ", logo=" + logo + ", userId=" + userId + "]";
 	}
-	
 	
 }

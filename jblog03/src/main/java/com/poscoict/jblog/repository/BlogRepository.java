@@ -4,25 +4,29 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.poscoict.jblog.vo.BlogVo;
 import com.poscoict.jblog.vo.UserVo;
 
 @Repository
-public class UserRepository {
-	
+public class BlogRepository {
+
 	@Autowired
 	private SqlSession sqlSession;
 	
+	// 블로그 첫 생성 
 	public boolean insert(UserVo vo) {
-		System.out.println(vo);
-		int count = sqlSession.insert("user.insert", vo);
+		int count = sqlSession.insert("blog.insert", vo);
 		return count == 1;
 	}
 
-	public UserVo login(UserVo vo) {
+	public BlogVo findById(String id) {
 		
-		UserVo userVo = sqlSession.selectOne("user.findByIdAndPassword", vo);
-		
-		return userVo;
+		return sqlSession.selectOne("blog.findById", id);
+	}
+
+	public void update(BlogVo blogVo) {
+		sqlSession.update("blog.update", blogVo);
 		
 	}
+
 }

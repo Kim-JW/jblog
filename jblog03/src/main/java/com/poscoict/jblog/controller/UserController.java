@@ -1,5 +1,7 @@
 package com.poscoict.jblog.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,5 +31,34 @@ public class UserController {
 	@RequestMapping(value = "/joinsuccess")
 	public String joinsuccess() {
 		return "user/joinsuccess";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
+		return "user/login";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(HttpSession session, UserVo vo) {
+		UserVo userVo = userService.login(vo);
+		
+		if(userVo == null) {
+			return "redirect:/user/login";
+		}
+		
+		session.setAttribute("authUser", userVo);
+		
+		return "redirect:/main";
+	}
+	
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession session) {
+		
+		if(session != null) {
+			session.removeAttribute("authUser");
+			session.invalidate();
+		}
+		
+		return "redirect:/main";
 	}
 }
