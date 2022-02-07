@@ -44,10 +44,7 @@
 				      					<option value = "${categoryvo.no}">${categoryvo.name }</option>
 				      				</c:forEach>
 				      			</select>
-				      			<select name="category">
-				      				<option>미분류</option>
-				      				<option>자바</option>
-				      			</select>
+			
 				      		</td>
 			      		</tr>
 			      		<tr>

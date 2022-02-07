@@ -8,4 +8,10 @@
 		values (null, #{title }, #{contents }, now(), #{categoryNo })
 		]]>
 	</insert>
+	
+	<select id = "getCategoryCnt" parameterType = "string" resultType="long">
+		<![CDATA[
+			select count(no) from post where category_no = #{no }; 
+		]]>
+	</select>
 </mapper>

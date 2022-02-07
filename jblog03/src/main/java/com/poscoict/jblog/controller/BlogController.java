@@ -3,6 +3,7 @@ package com.poscoict.jblog.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.ServletContext;
 
@@ -24,7 +25,7 @@ import com.poscoict.jblog.vo.CategoryVo;
 import com.poscoict.jblog.vo.PostVo;
 
 @Controller
-@RequestMapping("/{id}")
+@RequestMapping("/{id:(?!assets).*}")
 public class BlogController {
 	
 	@Autowired
@@ -42,8 +43,24 @@ public class BlogController {
 	@Autowired
 	private FileUploadService fileUploadService;
 	
-	@RequestMapping("")
-	public String main(@PathVariable("id") String id, Model model) {
+	@RequestMapping({"", "/{pathNo1}", "/{pathNo1}/{pathNo2}}"})
+	public String main(@PathVariable("id") String id,
+						@PathVariable("pathNo1") Optional<Long> pathNo1,
+						@PathVariable("pathNo2") Optional<Long> pathNo2,
+						Model model) {
+		
+		Long categoryNo = 0L; 
+		Long postNo = 0L;
+		
+		if(pathNo2.isPresent()) {
+			categoryNo = pathNo1.get();
+			postNo = pathNo2.get();
+		}
+		
+		if(pathNo1.isPresent()) {
+			categoryNo = pathNo1.get();
+		}
+		
 		
 		servletContext.setAttribute("blogVo", blogService.findById(id));
 		
@@ -61,7 +78,14 @@ public class BlogController {
 		List<CategoryVo> categoryList = categoryService.getCategoryById(id); 
 		Map<String, Object> map = new HashMap<String, Object>();
 		
+		List<Long> categoryCntList = categoryService.getCategoryCnt(id);
+		
+		for(Long l : categoryCntList) {
+			System.out.println("------------" + l);
+		}
+		
 		map.put("categorylist", categoryList);
+		map.put("categorycnt", categoryCntList);
 		model.addAttribute("map", map);
 		
 		return "blog/blog-admin-category";

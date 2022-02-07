@@ -42,12 +42,12 @@
 		      			<th>설명</th>
 		      			<th>삭제</th>      			
 		      		</tr>
-		      		
+		      		<c:set var="categorycount" value="${map.categorycnt }"/>
 		      		<c:forEach items="${map.categorylist }" var = "categoryvo" varStatus="status">
 		      			<tr>
 						<td>${categoryvo.no }</td>
 						<td>${categoryvo.name }</td>
-						<td>${postcnt }</td>
+						<td>${categorycount[status.index] }</td>
 						<td>${categoryvo.description }</td>
 						<td><a href="${pageContext.servletContext.contextPath}/${blogVo.userId}/admin/category/delete/${categoryvo.no}">
 						<img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
