@@ -16,4 +16,13 @@ public class PostService {
 		postRepository.insert(postVo);
 	}
 
+	public PostVo getPostOneByNo(Long no) {
+		
+		return postRepository.getPostOneByNo(no);
+	}
+
+	public PostVo getPostByNo(Long postNo) {
+		return postRepository.getPostByNo(postNo);
+	}
+
 }

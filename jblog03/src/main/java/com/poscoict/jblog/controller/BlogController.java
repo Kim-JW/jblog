@@ -25,7 +25,7 @@ import com.poscoict.jblog.vo.CategoryVo;
 import com.poscoict.jblog.vo.PostVo;
 
 @Controller
-@RequestMapping("/{id:(?!assets).*}")
+@RequestMapping("/{id:(?!assets)(?!images).*}")
 public class BlogController {
 	
 	@Autowired
@@ -43,13 +43,13 @@ public class BlogController {
 	@Autowired
 	private FileUploadService fileUploadService;
 	
-	@RequestMapping({"", "/{pathNo1}", "/{pathNo1}/{pathNo2}}"})
+	@RequestMapping({"", "/{pathNo1}", "/{pathNo1}/{pathNo2}"})
 	public String main(@PathVariable("id") String id,
 						@PathVariable("pathNo1") Optional<Long> pathNo1,
 						@PathVariable("pathNo2") Optional<Long> pathNo2,
 						Model model) {
 		
-		Long categoryNo = 0L; 
+		Long categoryNo = 0L;
 		Long postNo = 0L;
 		
 		if(pathNo2.isPresent()) {
@@ -61,8 +61,27 @@ public class BlogController {
 			categoryNo = pathNo1.get();
 		}
 		
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		servletContext.setAttribute("blogVo", blogService.findById(id));
+		
+		// 우측 카테고리 목록
+		map.put("categorylist", categoryService.getCategoryById(id));
+		
+		if(categoryNo == 0L && postNo == 0L) {
+			CategoryVo defaultCategory = categoryService.getDefaultCategoryNoById(id);
+			map.put("postlist", categoryService.getPostByCategoryNo(defaultCategory.getNo()));
+			map.put("post", postService.getPostOneByNo(defaultCategory.getNo()));
+			
+		} else if (postNo == 0L) {
+			map.put("postlist", categoryService.getPostByCategoryNo(categoryNo));
+			map.put("post", postService.getPostOneByNo(categoryNo));
+		} else {
+			map.put("postlist", categoryService.getPostByCategoryNo(categoryNo));
+			map.put("post", postService.getPostByNo(postNo));
+		}
+		
+		model.addAttribute("map", map);
 		
 		return "blog/blog-main";
 	}

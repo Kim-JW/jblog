@@ -3,6 +3,7 @@ package com.poscoict.jblog.service;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.poscoict.jblog.repository.BlogRepository;
 import com.poscoict.jblog.repository.CategoryRepository;

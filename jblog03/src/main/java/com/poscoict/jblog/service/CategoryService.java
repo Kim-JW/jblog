@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.poscoict.jblog.repository.CategoryRepository;
 import com.poscoict.jblog.repository.PostRepository;
 import com.poscoict.jblog.vo.CategoryVo;
+import com.poscoict.jblog.vo.PostVo;
 
 @Service
 public class CategoryService {
@@ -44,6 +45,16 @@ public class CategoryService {
 		}
 		
 		return categoryCntList;
+	}
+
+	public List<PostVo> getPostByCategoryNo(Long no) {
+		
+		return postRepository.getPostByCategoryNo(no);
+	}
+
+	public CategoryVo getDefaultCategoryNoById(String id) {
+		
+		return categoryRepository.getDefaultCategoryNoById(id);
 	}
 	
 }

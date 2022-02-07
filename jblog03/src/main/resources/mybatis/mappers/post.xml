@@ -14,4 +14,24 @@
 			select count(no) from post where category_no = #{no }; 
 		]]>
 	</select>
+	
+	<select id = "getPostByCategoryNo" parameterType = "string" resultType="postvo">
+		<![CDATA[
+			select no, title, contents, date_format(reg_date, '%Y/%m/%d') as regDate, category_no as categoryNo  from post where category_no = #{no } order by reg_date desc; 
+		]]>
+	</select>
+	
+	<select id = "getPostOneByNo" parameterType = "string" resultType="postvo">
+		<![CDATA[
+			select no, title, contents, date_format(reg_date, '%Y/%m/%d') as regDate, category_no as categoryNo  from post where category_no = #{no } order by reg_date desc limit 1; 
+		]]>
+	</select>
+	
+	<select id = "getPostByNo" parameterType = "long" resultType="postvo">
+		<![CDATA[
+			select no, title, contents, date_format(reg_date, '%Y/%m/%d') as regDate, category_no as categoryNo  from post where no = #{no } ; 
+		]]>
+	</select>
+	
+	
 </mapper>

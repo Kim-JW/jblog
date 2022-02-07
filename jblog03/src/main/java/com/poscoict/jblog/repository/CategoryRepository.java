@@ -39,4 +39,8 @@ public class CategoryRepository {
 		
 	}
 
+	public CategoryVo getDefaultCategoryNoById(String id) {
+		return sqlSession.selectOne("category.getDefaultCategoryNoById", id);
+	}
+
 }
