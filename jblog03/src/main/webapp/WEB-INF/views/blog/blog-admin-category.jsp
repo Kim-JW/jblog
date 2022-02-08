@@ -50,7 +50,9 @@
 						<td>${categorycount[status.index] }</td>
 						<td>${categoryvo.description }</td>
 						<td><a href="${pageContext.servletContext.contextPath}/${blogVo.userId}/admin/category/delete/${categoryvo.no}">
+						<c:if test="${categorycount[status.index] eq 0}">
 						<img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
+						</c:if>
 					</tr>  
 		      		</c:forEach>				  
 				</table>
