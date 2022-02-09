@@ -38,18 +38,18 @@ public class UserController {
 		return "user/login";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(HttpSession session, UserVo vo) {
-		UserVo userVo = userService.login(vo);
-		
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
+//	public String login(HttpSession session, UserVo vo) {
+//		UserVo userVo = userService.login(vo);
+//		
 //		if(userVo == null) {
 //			return "redirect:/user/login";
 //		}
 //		
 //		session.setAttribute("authUser", userVo);
-		
-		return "redirect:/main";
-	}
+//		
+//		return "redirect:/main";
+//	}
 	
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {

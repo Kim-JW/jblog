@@ -3,9 +3,19 @@
   <display-name>jblog04</display-name>
  <context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/applicationContext.xml</param-value>
+		<param-value>com.poscoict.jblog.config.AppConfig</param-value>
 	</context-param>
-
+	
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>com.poscoict.jblog.config.AppConfig</param-value>
+	</context-param>
+	
 	<!-- Context Load Listener -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -32,8 +42,14 @@
 		</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring-servlet.xml</param-value>
+			<param-value>com.poscoict.jblog.config.WebConfig</param-value>
 		</init-param>
+		
+		<init-param>
+			<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+		</init-param>
+		
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
