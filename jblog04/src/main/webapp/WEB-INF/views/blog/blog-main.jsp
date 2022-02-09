@@ -22,43 +22,43 @@
 						<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>	
 					</c:otherwise>
 				</c:choose>
+				
 				<li><a href="${pageContext.request.contextPath}/${blogVo.userId}/admin">블로그 관리</a></li>
 				<li><a href="${pageContext.request.contextPath}/${blogVo.userId}">내 블로그</a></li>
 			</ul>
 		</div>
 		<div id="wrapper">
-			<div id="content" class="full-screen">
-				<ul class="admin-menu">
-					<li><a href="${pageContext.request.contextPath}/${blogVo.userId }/admin">기본설정</a></li>
-					<li><a href="${pageContext.request.contextPath}/${blogVo.userId }/admin/category">카테고리</a></li>
-					<li class="selected">글작성</li>
+			<div id="content">
+				<div class="blog-content">
+				<c:set value="${map.post }" var="postvo" />
+					<h4>${postvo.title }</h4>
+					<p>
+						${postvo.contents }
+					<p>
+				</div>
+				<ul class="blog-list">
+				<c:forEach items="${map.postlist }" var = "postlistvo" varStatus="status">
+					<li><a href="${pageContext.request.contextPath}/${blogVo.userId}/${postlistvo.categoryNo}/${postlistvo.no }">${postlistvo.title }</a> <span>${postlistvo.regDate }</span>	</li>
+				</c:forEach>
 				</ul>
-				<form action="${pageContext.request.contextPath}/${blogVo.userId }/admin/write" method="post">
-			      	<table class="admin-cat-write">
-			      		<tr>
-			      			<td class="t">제목</td>
-			      			<td>
-			      				<input type="text" size="60" name="title">
-				      			<select name = "categoryNo">
-				      				<c:forEach items="${map.categorylist }" var= "categoryvo" varStatus="status">				  
-				      					<option value = "${categoryvo.no}">${categoryvo.name }</option>
-				      				</c:forEach>
-				      			</select>
-			
-				      		</td>
-			      		</tr>
-			      		<tr>
-			      			<td class="t">내용</td>
-			      			<td><textarea name="contents"></textarea></td>
-			      		</tr>
-			      		<tr>
-			      			<td>&nbsp;</td>
-			      			<td class="s"><input type="submit" value="포스트하기"></td>
-			      		</tr>
-			      	</table>
-				</form>
 			</div>
 		</div>
+
+		<div id="extra">
+			<div class="blog-logo">
+				<img src="${pageContext.request.contextPath}${blogVo.logo }">
+			</div>
+		</div>
+
+		<div id="navigation">
+			<h2>카테고리</h2>
+			<ul>
+			<c:forEach items="${map.categorylist }" var = "categoryvo" varStatus="status">
+				<li><a href="${pageContext.request.contextPath}/${blogVo.userId }/${categoryvo.no }">${categoryvo.name }</a></li>
+			</c:forEach>
+			</ul>
+		</div>
+		
 		<div id="footer">
 			<p>
 				<strong>Spring 이야기</strong> is powered by JBlog (c)2016

@@ -63,15 +63,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		 * }
 		 * 
 		 * */
-		
-		String RequestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String command = RequestURI.substring(contextPath.length());
-		String userId = command.split("/")[1];
-		
-		if(!userId.equals(authUser.getId())) {
-			response.sendRedirect(request.getContextPath() + "/" + userId);
-		}
 
 //		String role = authUser.getRole();
 //		if (!"ADMIN".equals(role)) {

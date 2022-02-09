@@ -8,7 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JBlog</title>
 <Link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.9.0.js"></script>
 </head>
 <body>
 	<div class="center-content">
@@ -26,10 +25,26 @@
 				</c:otherwise>
 			</c:choose>
 		</ul>
-		<form class="login-form" method="post" action="${pageContext.request.contextPath }/user/auth">
-      		<label>아이디</label> <input type="text" name="id">
-      		<label>패스워드</label> <input type="text" name="password">
-      		<input type="submit" value="로그인">
+		<form class="join-form" id="join-form" method="post" action="">
+			<label class="block-label" for="name">이름</label>
+			<input id="name"name="name" type="text" value="">
+			
+			<label class="block-label" for="blog-id">아이디</label>
+			<input id="blog-id" name="id" type="text"> 
+			<input id="btn-checkemail" type="button" value="id 중복체크">
+			<img id="img-checkemail" style="display: none;" src="${pageContext.request.contextPath}/assets/images/check.png">
+
+			<label class="block-label" for="password">패스워드</label>
+			<input id="password" name="password" type="password" />
+
+			<fieldset>
+				<legend>약관동의</legend>
+				<input id="agree-prov" type="checkbox" name="agreeProv" value="y">
+				<label class="l-float">서비스 약관에 동의합니다.</label>
+			</fieldset>
+
+			<input type="submit" value="가입하기">
+
 		</form>
 	</div>
 </body>
