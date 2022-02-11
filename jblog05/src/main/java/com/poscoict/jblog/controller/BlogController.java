@@ -49,7 +49,7 @@ public class BlogController {
 						@PathVariable("pathNo1") Optional<Long> pathNo1,
 						@PathVariable("pathNo2") Optional<Long> pathNo2,
 						Model model) {
-		
+		System.out.println(id);
 		Long categoryNo = 0L;
 		Long postNo = 0L;
 		

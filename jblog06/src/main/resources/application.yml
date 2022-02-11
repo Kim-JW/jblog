@@ -2,9 +2,11 @@ spring:
    profiles:
       active: dev
 
+
 ---
-# common : spring boot configuration
+# common: spring boot configuration
 spring:
+
    # devtools - live reload
    livereload:
       enabled: true
@@ -13,13 +15,7 @@ spring:
    mvc:
       view:
          prefix: /WEB-INF/views/
-         suffix: .jsp
-
-   # message resource(Internationalization)
-   messages:
-      always-message-format: true
-      basename: messages/messages_ko
-      encoding: UTF-8
+         suffix: .jsp 
 
    # multipart
    multipart:
@@ -27,14 +23,13 @@ spring:
       max-file-size: 50MB
       max-request-size: 50MB
 
-   # aop(@EnableAspectJAutoProxy)
-   aop:
+   # aop
+   aop: 
       auto: true
       proxy-target-class: true
 
 ---
-
-# dev profile : spring boot configuration
+# dev profile: spring boot configuration
 spring:
    config:
       activate:
@@ -51,7 +46,6 @@ spring:
          maximum-pool-size: 20
 
 ---
-
 # production profile: spring boot configuration
 spring:
    config:
@@ -69,7 +63,6 @@ spring:
          maximum-pool-size: 20
 
 ---
-
 # server
 server:
    port: 8080
@@ -83,9 +76,6 @@ server:
          force-response: false
 
 ---
-
 # mybatis
 mybatis:
    config-location: classpath:mybatis/configuration.xml
-
-

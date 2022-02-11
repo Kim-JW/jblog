@@ -19,7 +19,7 @@ import com.poscoict.jblog.security.LoginInterceptor;
 import com.poscoict.jblog.security.LogoutInterceptor;
 
 @SpringBootConfiguration
-@PropertySource("classpath:com/poscoict/jblog/config/WebConfig.properties")
+@PropertySource("classpath:com/poscoict/jblog/config/Webconfig.properties")
 public class WebConfig implements WebMvcConfigurer {
 	
 	@Autowired

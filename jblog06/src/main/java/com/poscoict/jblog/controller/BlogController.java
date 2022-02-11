@@ -50,6 +50,8 @@ public class BlogController {
 						@PathVariable("pathNo2") Optional<Long> pathNo2,
 						Model model) {
 		
+		System.out.println("-------------------------------------4444444----------------");
+		
 		Long categoryNo = 0L;
 		Long postNo = 0L;
 		
@@ -83,6 +85,8 @@ public class BlogController {
 		}
 		
 		model.addAttribute("map", map);
+		
+		
 		
 		return "blog/blog-main";
 	}

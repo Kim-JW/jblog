@@ -14,6 +14,8 @@ public class BlogService {
 
 	public BlogVo findById(String id) {
 		
+		System.out.println("-------------------------------------555----------------");
+		
 		return blogRepository.findById(id);
 	}
 
