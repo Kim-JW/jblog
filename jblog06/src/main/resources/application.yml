@@ -43,7 +43,7 @@ spring:
    # datasource
    datasource:
       driver-class-name: org.mariadb.jdbc.Driver
-      url: jdbc:mysql://192.168.0.71:3307/jblog?characterEncoding=UTF-8&amp;serverTimezone=UTC
+      url: jdbc:mysql://192.168.0.71:3307/jblog?characterEncoding=UTF-8&serverTimezone=UTC
       username: jblog
       password: jblog
       hikari:
@@ -61,9 +61,9 @@ spring:
    # datasource
    datasource:
       driver-class-name: org.mariadb.jdbc.Driver
-      url: jdbc:mysql://213.14.5.23:3307/webdb?characterEncoding=UTF-8&amp;serverTimezone=UTC
-      username: webdb
-      password: xxxxxxxxxxxxxxxxxxxxxx
+      url: jdbc:mysql://192.168.0.71:3307/jblog?characterEncoding=UTF-8&serverTimezone=UTC
+      username: jblog
+      password: jblog
       hikari:
          mininum-idle: 10
          maximum-pool-size: 20
