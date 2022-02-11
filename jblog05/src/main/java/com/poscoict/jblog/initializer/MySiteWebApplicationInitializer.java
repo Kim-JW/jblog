@@ -1,4 +1,4 @@
-package com.poscoict.mysite.initializer;
+package com.poscoict.jblog.initializer;
 
 import javax.servlet.Filter;
 import javax.servlet.ServletRegistration.Dynamic;
@@ -31,9 +31,9 @@ public class MySiteWebApplicationInitializer extends AbstractAnnotationConfigDis
 		return new Filter[] {new CharacterEncodingFilter("utf-8", false)};
 	}
 	
-//	@Override
-//	protected void customizeRegistration(Dynamic registration) {
-//		registration.setInitParameter("throwExceptionifNoHandlerFound","true");
-//		
-//	}
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
+		
+	}
 }

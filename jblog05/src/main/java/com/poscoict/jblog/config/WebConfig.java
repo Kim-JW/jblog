@@ -12,7 +12,7 @@ import com.poscoict.config.web.SecurityConfig;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan({"com.poscoict.jblog.controller"})
+@ComponentScan({"com.poscoict.jblog.controller", "com.poscoict.jblog.exception"})
 @Import({SecurityConfig.class, MvcConfig.class, FileUploadConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter{
 	
