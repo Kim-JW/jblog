@@ -89,9 +89,3 @@ mybatis:
    config-location: classpath:mybatis/configuration.xml
 
 
----
-
-#logging
-logging:
-   config:
-      classpath: logback.xml
