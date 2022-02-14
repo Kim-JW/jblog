@@ -102,10 +102,6 @@ public class BlogController {
 		
 		List<Long> categoryCntList = categoryService.getCategoryCnt(id);
 		
-		for(Long l : categoryCntList) {
-			System.out.println("------------" + l);
-		}
-		
 		map.put("categorylist", categoryList);
 		map.put("categorycnt", categoryCntList);
 		model.addAttribute("map", map);
