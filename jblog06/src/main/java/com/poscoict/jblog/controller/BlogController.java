@@ -50,8 +50,6 @@ public class BlogController {
 						@PathVariable("pathNo2") Optional<Long> pathNo2,
 						Model model) {
 		
-		System.out.println("-------------------------------------4444444----------------");
-		
 		Long categoryNo = 0L;
 		Long postNo = 0L;
 		
@@ -87,7 +85,6 @@ public class BlogController {
 		model.addAttribute("map", map);
 		
 		
-		
 		return "blog/blog-main";
 	}
 	
@@ -105,10 +102,6 @@ public class BlogController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		List<Long> categoryCntList = categoryService.getCategoryCnt(id);
-		
-		for(Long l : categoryCntList) {
-			System.out.println("------------" + l);
-		}
 		
 		map.put("categorylist", categoryList);
 		map.put("categorycnt", categoryCntList);
